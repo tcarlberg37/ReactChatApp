@@ -7,7 +7,8 @@ class Login extends React.Component {
     }
 
     loginClicked() {
-        this.setState({incorrect: true})
+        let currentComponent = this;
+        currentComponent.setState({incorrect: true})
     }
 
     render() {

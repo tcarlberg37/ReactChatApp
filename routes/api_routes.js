@@ -44,9 +44,10 @@ router.get('/roomList', (req, res) => {
   })
 })
 
-router.delete('/deleteRoom/:roomname', (req, res) => {
+router.delete('/deleteRoom', (req, res) => {
   Room.findOneAndDelete({room: req.params.roomname}, (err, data) => {
       if (err) {
+          console.log(err);
           return next(err);
       } else {
           console.log('Room deleted');

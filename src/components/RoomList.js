@@ -59,7 +59,7 @@ class RoomList extends React.Component {
         console.log(event.target.value); // index of the row that was clicked
         var selectedRoom = this.state.data[event.target.value]; // JSON of the data for the clicked row
         console.log(selectedRoom);
-        axios.delete('http://localhost:3001/api/deleteRoom/', {data: {room: selectedRoom.room}}).then(res => {
+        axios.delete('http://localhost:3001/api/deleteRoom', {data: {roomname: selectedRoom.room}}).then(res => {
             console.log(res.data);
         })
         .catch(error => {

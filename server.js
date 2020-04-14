@@ -3,7 +3,8 @@
 // Afsana Bilkis Ritu 101165654
 
 const express = require('express');
-const app = express();
+const cors = require('cors');
+const app = express().use('*', cors()); // to fix CORS errors
 var io = require('socket.io'); // var not const because we change this value further down with io = io.listen(server)
 var path = require('path');
 const bodyParser = require('body-parser'); // needed for POSTing json
@@ -37,12 +38,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize()); // need to initialize passport for authentication
 app.use(passport.session()); // session is optional but only works if you put app.use(session()) above it
 
+/* app = express().use('*', cors());  means we don't need all these headers
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*'); // fix CORS errors
   res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, OPTIONS'); // allow DELETE as well
-  res.header('Access-Control-Allow-Headers', 'Origin, Delete, OK, Content-Type, X-Requested-With, Access-Control-Allow-Headers,  Accept, Authorization'); // put in as many damn headers as I can to try to fix DELETE CORS error
+  res.header('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Requested-With, Access-Control-Allow-Headers, Accept, Authorization'); // put in as many damn headers as I can to try to fix DELETE CORS error
   next();
 });
+*/
 
 // passport.js configuration checks the User schema for username and password
 passport.use(new LocalStrategy(
