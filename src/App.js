@@ -11,16 +11,18 @@ import AddRoom from './components/AddRoom';
 import ChatRoom from './components/ChatRoom';
 import ChatLobby from './components/ChatLobby';
 
-function App() {
+function App() { 
+  
   return (
     <BrowserRouter history={history}>
-    <div style={{ float: 'left', margin: '0 2em'}}>
-      <a href="/login" style={{marginLeft: '1em'}}><button>Log In</button></a>
-    </div>
-    <div style={{ float: 'right', margin: '0 2em'}}>
-      <i style={{marginRight: '1em'}}>Administrator</i>
-      <a href="/login"><button>Log Out</button></a>
-    </div>
+    {document.location.pathname !== "/" && // only show toolbar if this is not the main page i.e. user has logged in
+      <div style={{ float: 'right', margin: '0 2em'}}>
+        <i style={{marginRight: '1em'}}>Administrator</i>
+        <a href="/login"><button>Log Out</button></a>
+      </div>
+    }
+    {document.location.pathname === "/" && <Login /> // only show Login if this is the opening page
+    } 
     <div>
       <Switch>
         <Route path="/login" component={Login} />

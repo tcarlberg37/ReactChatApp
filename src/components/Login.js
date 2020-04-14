@@ -2,15 +2,6 @@ import React from 'react';
 
 class Login extends React.Component {
 
-    state = {
-        incorrect: false
-    }
-
-    loginClicked() {
-        let currentComponent = this;
-        currentComponent.setState({incorrect: true})
-    }
-
     render() {
         let loginStyle = {
             display: 'flex',
@@ -32,9 +23,8 @@ class Login extends React.Component {
                         <input type="password" name="password"/>
                     </div>
                     <div style={loginStyle}>
-                        <input type="submit" value="Log In" onClick={this.loginClicked}/>
+                        <input type="submit" value="Log In" />
                     </div>
-                    {this.state.incorrect && <strong style={{color: 'red'}}>Incorrect username or password.</strong>}
                 </form>
                 <div>
                     <a href="/register"><button>REGISTER</button></a>
