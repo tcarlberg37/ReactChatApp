@@ -45,6 +45,7 @@ router.get('/roomList', (req, res) => {
 })
 
 router.delete('/deleteRoom', (req, res) => {
+  // this isn't actually deleting even though there's no errors! Couldn't figure out why
   Room.findOneAndDelete({room: req.params.roomname}, (err, data) => {
       if (err) {
           console.log(err);

@@ -42,7 +42,8 @@ class RoomList extends React.Component {
             Cell: row => ( // we can use Cell to custom-render html for this column
                 <div>
                     <button value={row.index} onClick={e => this.editStatus(e)}>Edit</button>
-                    <button value={row.index} onClick={e => this.deleteRow(e)}>Delete</button>
+                    {//<button value={row.index} onClick={e => this.deleteRow(e)}>Delete</button> // remove delete button because I couldn't get it to work with API
+                    }
                 </div>
             ) 
         }
